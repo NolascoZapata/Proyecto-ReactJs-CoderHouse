@@ -1,13 +1,22 @@
 import React from 'react'
+import ItemCount from '../ItemCount/ItemCount'
+import "./ItemListContainer.css"
+
+
+
+const handleCount=(cant)=>{
+    return alert(cant);
+} 
 
 const ItemListContainer=(props)=>{
     const {greeting, item}=props
     return (
-    <div>
+    <div className=" item-list-container">
         <h1>{greeting}</h1>
         <h2>{item}</h2>
         <h2>{item}</h2>
         <h2>{item}</h2>
+        <ItemCount stock={5} initial={1} onAdd={handleCount} />
     </div>
     )
 }
