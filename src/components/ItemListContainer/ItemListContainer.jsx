@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
+import ItemList from './ItemList/ItemList';
 import "./ItemListContainer.css"
 
 
@@ -17,6 +18,7 @@ const ItemListContainer=(props)=>{
         <h2>{item}</h2>
         <h2>{item}</h2>
         <ItemCount stock={5} initial={1} onAdd={handleCount} />
+        <ItemList/>
     </div>
     )
 }
