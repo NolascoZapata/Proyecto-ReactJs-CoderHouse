@@ -8,12 +8,12 @@ function ItemDetailContainer() {
         getItems() // simulacion de getItems
         .then(resp => setItem(resp))
     }, [])
-
+    const prod1= item[1]
     return (
-        <div>
-            <h2>Item detail container</h2>
-             <ItemDetail item= {item} />  {/*paso mi estado "item" a ItemDetail */}
-        </div>
+        <>
+            <h2>Detalles del Producto</h2>
+            <ItemDetail item={prod1} />  {/*paso mi estado "item" a ItemDetail */}
+        </>
     )
 }
 

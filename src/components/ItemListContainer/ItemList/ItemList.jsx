@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import {getItems} from '../../../getItems'
 import Item from './Item/Item.jsx'
 import ItemDetailContainer from './Item/ItemDetailContainer/ItemDetailContainer'
-
+import './ItemList.css'
 
 function ItemList() {
     const [itemList, setItemList] = useState([]) // estado inicial array itemList vacio
