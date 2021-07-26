@@ -1,47 +1,28 @@
 import React,{useEffect,useState} from 'react'
-import Item from '../Item/Item'
-import {productos} from '../Item/productos.js'
+import {getItems} from '../../../getItems'
+import Item from './Item/Item.jsx'
+import ItemDetailContainer from './Item/ItemDetailContainer/ItemDetailContainer'
 
 
 function ItemList() {
-    const [itemList, setItemList] = useState([])
+    const [itemList, setItemList] = useState([]) // estado inicial array itemList vacio
     useEffect(() => {
-        const items= productos
-
-        const task = new Promise((resuelto, rechazado)=>{
-            let status=200
-            if(status===200){
     
-                setTimeout(()=>{
-                    resuelto(items)
-                    
-                },2000)
-            }else{
-                rechazado('rechazado')
-            }
+        getItems() // simulacion de carga de productos
     
-        })   
-        const getPromiseTask=()=>{
-            return task
-        }
-
-        getPromiseTask()
     .then((resp)=> setItemList(resp))    
-    .catch(err=> { console.log('un error')})    
+    .catch(err=> { console.log('un error')})     
     
         
-    }, [])   
-    console.log(itemList)
+    }, [])
     
     
 
     return(
-        <div>
-            {itemList.map((item) => (
-            <Item key= {item.id} prodData={itemList}/>
-)
-)
-}
+        <div className="row">
+            {itemList.map((item) => (   //recorro los objetos dentro de mi estado "itemList" y para cada objeto lo ingreso en compoente Item
+            <Item key= {item.id} prodData={item}/>))} 
+            <ItemDetailContainer/> 
         </div>
         
         )
