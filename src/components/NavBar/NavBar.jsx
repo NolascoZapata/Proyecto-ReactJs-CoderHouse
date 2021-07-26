@@ -1,6 +1,7 @@
 import React from 'react';
 import imglogo from '../../assets/img/paginainicio.jpeg'
-import { Navbar,Container,Nav,NavDropdown} from 'react-bootstrap';
+import { Navbar,Container,Nav,NavDropdown, NavbarBrand} from 'react-bootstrap';
+// import{Link} from 'react-router-dom'
 import CartWidget from "../CartWidget/CartWidget";
 import './NavBar.css';
 
@@ -10,10 +11,11 @@ return (
 <div>
 <Navbar bg="none" expand="sm">
   <Container>
-    <Navbar.Brand href="#home"><img src={imglogo} alt="logo" /> </Navbar.Brand>
+    <NavbarBrand href="#home"><img src={imglogo} width="25%"alt="logo" /></NavbarBrand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
+      {/* <Link to="/category">Category</Link> */}
         <Nav.Link href="#home">Home</Nav.Link>
         <NavDropdown title="Bebés" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">0 a 3 meses</NavDropdown.Item>

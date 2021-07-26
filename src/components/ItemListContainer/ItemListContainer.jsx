@@ -10,13 +10,10 @@ const handleCount=(cant)=>{
 } 
 
 const ItemListContainer=(props)=>{
-    const {greeting, item}=props
+    const {greeting}=props
     return (
-    <div className=" item-list-container">
+    <div className="item-list-container">
         <h1>{greeting}</h1>
-        <h2>{item}</h2>
-        <h2>{item}</h2>
-        <h2>{item}</h2>
         <ItemCount stock={5} initial={1} onAdd={handleCount} />
         <ItemList/>
     </div>

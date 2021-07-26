@@ -1,26 +1,35 @@
 import React from 'react'
 import { Card,Button } from 'react-bootstrap'
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer'
 
 
 
-function Item(props) {
+function Item({
+    prodData:{
+        id,
+        imgDir,
+        nombre,
+        precio,
+        talle,
+        stock
+    }
+}) {
     return(
-    props.productos.map((infoProd)=>{
-    return(
-                <Card key = {infoProd.id} style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={infoProd.imgDir} />
+                <Card key = {id} style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={imgDir} />
                     <Card.Body>
-                        <Card.Title>{infoProd.nombre}</Card.Title>
+                        <Card.Title>{nombre}</Card.Title>
                         <Card.Text>
-                            Precio: {infoProd.precio} <br/>
-                            Talle: {infoProd.talle}<br/>
-                            Stock: {infoProd.stock}<br/>
+                            Precio: {precio} <br/>
+                            Talle: {talle}<br/>
+                            Stock: {stock}<br/>
+                            detalle: {ItemDetailContainer}
                         </Card.Text>
                         <Button variant="success">Detalles</Button>
                     </Card.Body>
                 </Card>)
-            })
+            }
             
-    )}
+    
 
 export default Item

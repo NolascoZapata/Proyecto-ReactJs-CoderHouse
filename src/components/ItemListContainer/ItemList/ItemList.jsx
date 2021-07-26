@@ -6,18 +6,19 @@ import {productos} from '../Item/productos.js'
 function ItemList() {
     const [itemList, setItemList] = useState([])
     useEffect(() => {
-        const items=productos
+        const items= productos
+
         const task = new Promise((resuelto, rechazado)=>{
             let status=200
             if(status===200){
     
                 setTimeout(()=>{
                     resuelto(items)
+                    
                 },2000)
             }else{
                 rechazado('rechazado')
             }
-    
     
         })   
         const getPromiseTask=()=>{
@@ -31,9 +32,23 @@ function ItemList() {
         
     }, [])   
     console.log(itemList)
-    return (
-        <Item productos = {itemList} />
-    )
+    
+    
+
+    return(
+        <div>
+            {itemList.map((item) => (
+            <Item key= {item.id} prodData={itemList}/>
+)
+)
 }
+        </div>
+        
+        )
+    
+    
+    
+}
+
 
 export default ItemList
