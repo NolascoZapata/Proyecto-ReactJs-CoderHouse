@@ -1,19 +1,25 @@
 import React from 'react'
 import { Card,Button } from 'react-bootstrap'
+import { Link } from "react-router-dom";
+import './Item.css'
 
 
 
 function Item({ prodData }) {
-    const {id, nombre, precio, imgDir} = prodData 
+    const {id, nombre, precio, imgDir} = prodData
     return(
-                <Card key = {id} style={{ width: '18rem' }} className="col-md-4">
-                    <Card.Img variant="top" src={imgDir} />
+                <Card id={id} style={{ width: '18rem' }} className="col-md-4 card-prod">
+                    <Card.Img variant="top" src={imgDir} alt= {nombre} />
                     <Card.Body>
                         <Card.Title>{nombre}</Card.Title>
-                        <Card.Text>
-                            Precio: ${precio} <br/>
+                        <Card.Text><p>Precio: ${precio} <br/></p>
+                            
                         </Card.Text>
-                        <Button variant="success">Detalles</Button>
+                        <Button className="btn-detalles">
+                            <Link to={`/item/${id}`} className="text-decoration-none text-light" >
+                                Detalles
+                            </Link>
+                            </Button>
                     </Card.Body>
                 </Card>)
             }

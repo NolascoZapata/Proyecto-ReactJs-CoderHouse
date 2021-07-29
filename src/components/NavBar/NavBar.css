@@ -3,7 +3,20 @@
 }
 
 
-.navbar .div-links{
-    margin-left: 3rem;
-    font-size: 1.5rem
+.navbar-light .navbar-nav .nav-link{
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    
+
+}
+.navegacion .link-nav{
+    text-decoration: none;
+    color:rebeccapurple
+}
+.navegacion .link-nav:hover{
+    text-decoration: none;
+    color:rgb(203, 65, 216);
+}
+.navegacion .link-activo{
+    color:rgb(203, 65, 216);
 }

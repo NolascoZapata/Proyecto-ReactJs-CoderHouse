@@ -1,26 +1,27 @@
 import React from 'react'
 import ItemCount from './ItemCount/ItemCount'
-import { Container } from 'react-bootstrap'
+//import { Container } from 'react-bootstrap'
 import './ItemDetail.css'
 
-const handleCount=(cant)=>{
-    return alert(cant);
-} 
+
 
 function ItemDetail({item={}}){
-    const {id,nombre,imgDir,stock,precio}=item 
     console.log(item)
-
+    
+    const handleCount=(cant)=>{
+        return alert(`Agregaste ${cant} ${item.nombre}`);
+    } 
     return (
-        <div className="item-detail">
-            <Container key={id}>
-                <h4>{nombre}</h4>
-                <img src={imgDir} alt="producto seleccionado"/> 
-                <ItemCount stock={5} initial={1} onAdd={handleCount} />
-                <p>Stock:{stock}</p>
-                <p>Precio: ${precio}</p>
-            </Container>
+
+        <div className="item-detail" key={item.id}>
+                <h4>{item.nombre}</h4>
+                <img src={item.imgDir} alt="producto seleccionado"/> 
+                <ItemCount stock={item.stock} initial={1} onAdd={handleCount} />
+                <p>Stock: {item.stock}</p>
+                <p>Talle: {item.talle}</p>
+                <p>Precio: ${item.precio}</p>
         </div>
+    
     )
 }
 

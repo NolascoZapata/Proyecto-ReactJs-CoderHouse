@@ -1,28 +1,38 @@
 import React,{useEffect,useState} from 'react'
 import {getItems} from '../../../getItems'
 import Item from './Item/Item.jsx'
-import ItemDetailContainer from './Item/ItemDetailContainer/ItemDetailContainer'
+import { useParams } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
+// import ItemDetailContainer from './Item/ItemDetailContainer/ItemDetailContainer'
 import './ItemList.css'
 
 function ItemList() {
     const [itemList, setItemList] = useState([]) // estado inicial array itemList vacio
+    const {categoryId}= useParams()
+    const [loading, setLoading]=useState(true)
+
     useEffect(() => {
-    
-        getItems() // simulacion de carga de productos
-    
-    .then((resp)=> setItemList(resp))    
-    .catch(err=> { console.log('un error')})     
-    
-        
-    }, [])
-    
-    
+        setLoading(true)
+        if (categoryId===undefined){
+            
+            getItems() // simulacion de carga de todos productos
+            .then((resp)=> setItemList(resp)) 
+            setLoading(false) 
+        }else{
+            getItems() // simulacion de carga de todos productos
+            .then((resp)=> setItemList(resp.filter(item=>item.categoria===categoryId))) // filtra por categoria
+            setLoading(false)   
+        }
+    }, [categoryId])
 
     return(
         <div className="row">
-            {itemList.map((item) => (   //recorro los objetos dentro de mi estado "itemList" y para cada objeto lo ingreso en compoente Item
-            <Item key= {item.id} prodData={item}/>))} 
-            <ItemDetailContainer/> 
+            {loading && <Spinner animation="border" variant="secondary" /> /*loading*/ } 
+            {!loading &&itemList.map((item) => (   //recorro los objetos dentro de mi estado "itemList" y para cada objeto lo ingreso en compoente Item
+                <div className="col-sm-6 col-lg-3 col-12">
+                    <Item key= {item.id} prodData= {item}/>
+                </div>
+            ))} 
         </div>
         
         )
