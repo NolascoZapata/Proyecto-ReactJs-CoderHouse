@@ -19,7 +19,7 @@
     > Uso React Router Dom para la navegación
 
 ## Aplicación en funcionamiento
-    ![image](https://github.com/NolascoZapata/Proyecto-ReactJs-CoderHouse/blob/master/gif-babies.gif)
+    ![](gif-babies.gif)
 
 ### Autor
 
