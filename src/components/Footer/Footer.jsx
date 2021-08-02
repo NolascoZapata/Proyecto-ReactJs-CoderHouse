@@ -12,9 +12,9 @@ function Footer() {
             <div className="container redes">
                 <div className="row">
                     <div className="col-12">
-                        <a href="/#"><FontAwesomeIcon icon={faFacebookSquare} size='3x' className="icono-redes m-2"/></a>
-                        <a href="/#"><FontAwesomeIcon icon={faInstagramSquare} size='3x' className="icono-redes m-2"/></a>
-                        <a href="/#"><FontAwesomeIcon icon={faTwitterSquare} size='3x' className="icono-redes m-2"/></a>
+                        <a href="/#"><FontAwesomeIcon icon={faFacebookSquare} size='2x' className="icono-redes m-2"/></a>
+                        <a href="/#"><FontAwesomeIcon icon={faInstagramSquare} size='2x' className="icono-redes m-2"/></a>
+                        <a href="/#"><FontAwesomeIcon icon={faTwitterSquare} size='2x' className="icono-redes m-2"/></a>
                     </div>
                 </div>
             </div>

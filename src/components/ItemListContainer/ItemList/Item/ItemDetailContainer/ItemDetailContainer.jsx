@@ -24,8 +24,11 @@ function ItemDetailContainer() {
     
     return (
         <>
+        <div className='detail-container'>
             <h2 className="detalle-tit">Detalles del Producto Seleccionado</h2>
             <ItemDetail item={item[0]} />  {/*paso mi estado "item" a ItemDetail */}
+        </div>
+            
         </>
     )
 }   

@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
+import './ItemCount.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCartPlus} from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom'
+
 
 function ItemCount(props) {
-    const {initial, stock, onAdd}=props
-
+    const {initial, stock, onAdd, addToCart}=props
     const [cantidad, setCantidad] = useState(initial) // inicializo con el valor de initial 
+    const [prodAgregado,setNuevoProd]=useState([])
 
     const subirCantidad = ()=>{
         if (cantidad<stock) {
@@ -15,6 +20,11 @@ function ItemCount(props) {
             setCantidad(cantidad-1) 
         }
     }
+
+
+    setNuevoProd([addToCart,cantidad])
+    console.log(prodAgregado)
+
     return (
         <>
             <div className="card text-center">
@@ -22,10 +32,17 @@ function ItemCount(props) {
                     <h5>Contador de items</h5>
                 </div>
                 <div className="cad-body">
-                    <button className="btn btn-primary " onClick={bajarCantidad}>-</button>
+                    <button className="btn-cant" onClick={bajarCantidad}>-</button>
                     <label>{cantidad}</label>
-                    <button className="btn btn-primary" onClick={subirCantidad}>+</button> <br/>
-                    <button className="btn btn-success" onClick={()=> onAdd(cantidad)}>Agregar al carrito</button>
+                    <button className="btn-cant" onClick={subirCantidad}>+</button> <br/>
+                    <button className="btn-agregar" onClick={()=> onAdd(cantidad)}>
+                            <FontAwesomeIcon icon={faCartPlus} size="2x"/>
+                            <p>Agregar al carrito</p>
+                    </button>
+                
+                    <button className= "btn-terminar-compra">
+                        <Link to='/cart'className='terminar-compra' >Terminar mi compra</Link>
+                    </button>
                 </div>
             </div>
         </>
