@@ -26,11 +26,12 @@ function ItemList() {
     }, [categoryId])
 
     return(
+        
         <div className="row">
             {loading && <Spinner animation="border" variant="secondary" /> /*loading*/ } 
             {!loading &&itemList.map((item) => (   //recorro los objetos dentro de mi estado "itemList" y para cada objeto lo ingreso en compoente Item
                 <div className="col-sm-6 col-lg-3 col-12">
-                    <Item key= {item.id} prodData= {item}/>
+                    <Item key={item.id} prodData= {item}/>
                 </div>
             ))} 
         </div>

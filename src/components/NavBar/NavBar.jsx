@@ -7,7 +7,7 @@ import './NavBar.css';
 export default function NavBar() {
 return (
     
-<div>
+<>
 <Navbar bg="none" expand="sm">
   <Container>
     <NavbarBrand><NavLink to="/"><img src='https://i.ibb.co/5284vPr/paginainicio.jpg' width="25%"alt="logo" /></NavLink></NavbarBrand>
@@ -50,7 +50,7 @@ return (
   </Container>
   
 </Navbar>
-</div>
+</>
 
 )
 }

@@ -6,9 +6,8 @@ import {Link} from 'react-router-dom'
 
 
 function ItemCount(props) {
-    const {initial, stock, onAdd, addToCart}=props
+    const {initial, stock, onAdd}=props
     const [cantidad, setCantidad] = useState(initial) // inicializo con el valor de initial 
-    const [prodAgregado,setNuevoProd]=useState([])
 
     const subirCantidad = ()=>{
         if (cantidad<stock) {
@@ -22,8 +21,6 @@ function ItemCount(props) {
     }
 
 
-    setNuevoProd([addToCart,cantidad])
-    console.log(prodAgregado)
 
     return (
         <>
@@ -35,11 +32,12 @@ function ItemCount(props) {
                     <button className="btn-cant" onClick={bajarCantidad}>-</button>
                     <label>{cantidad}</label>
                     <button className="btn-cant" onClick={subirCantidad}>+</button> <br/>
+
                     <button className="btn-agregar" onClick={()=> onAdd(cantidad)}>
                             <FontAwesomeIcon icon={faCartPlus} size="2x"/>
                             <p>Agregar al carrito</p>
                     </button>
-                
+            
                     <button className= "btn-terminar-compra">
                         <Link to='/cart'className='terminar-compra' >Terminar mi compra</Link>
                     </button>

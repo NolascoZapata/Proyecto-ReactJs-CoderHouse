@@ -1,8 +1,11 @@
-import React,{useEffect , useState} from 'react'
+import React,{useEffect , useState,useContext} from 'react'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { useParams } from "react-router-dom";
 import {getItems} from '../../../../../getItems'
+
 import './ItemDetailContainer.css'
+
+
 
 function ItemDetailContainer() {
     const [item, setItem]=useState({})
@@ -20,13 +23,21 @@ function ItemDetailContainer() {
     
         }
     }, [itemId])
-    
+
+
+
+
+
+
+
+ 
+
     
     return (
         <>
         <div className='detail-container'>
             <h2 className="detalle-tit">Detalles del Producto Seleccionado</h2>
-            <ItemDetail item={item[0]} />  {/*paso mi estado "item" a ItemDetail */}
+                <ItemDetail item={item[0]} />  {/*paso mi estado "item" a ItemDetail */}
         </div>
             
         </>

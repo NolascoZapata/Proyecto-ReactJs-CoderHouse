@@ -8,20 +8,19 @@ import './Item.css'
 function Item({ prodData }) {
     const {id, nombre, precio, imgDir} = prodData
     return(
-                <Card id={id} style={{ width: '18rem' }} className="col-md-4 card-prod">
+                <Card style={{ width: '18rem' }} className="col-md-4 card-prod">
                     <Card.Img variant="top" src={imgDir} alt= {nombre} />
                     <Card.Body>
                         <Card.Title>{nombre}</Card.Title>
-                        <Card.Text><p>Precio: ${precio} <br/></p>
-                            
-                        </Card.Text>
+                        <Card.Text>Precio: ${precio} <br/></Card.Text>
                         <Button className="btn-detalles">
                             <Link to={`/item/${id}`} className="text-decoration-none text-light" >
                                 Detalles
                             </Link>
                             </Button>
                     </Card.Body>
-                </Card>)
+                </Card>
+            )
             }
             
     
