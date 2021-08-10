@@ -20,31 +20,7 @@ return (
         <Nav.Link ><NavLink to="/category/boy" className='link-nav'  exact activeClassName="link-activo">Niños</NavLink></Nav.Link>
         <Nav.Link ><NavLink to="/category/ofertas" className='link-nav'  exact activeClassName="link-activo">Ofertas</NavLink></Nav.Link>
         <Nav.Link ><NavLink to="/contacto" className='link-nav'  exact activeClassName="link-activo">Contacto</NavLink></Nav.Link>
-        <CartWidget/>
-
-        {/* <NavDropdown title="Bebés" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">0 a 3 meses</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">6 a 9 meses</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">9 a 12 meses</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Niñas" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">2T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">3T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">4T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.4">5T</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Niños" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">2T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">3T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">4T</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.4">5T</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Ofertas" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Bebés</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Niñas</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Niños</NavDropdown.Item>
-        </NavDropdown> */}
-        
+        <CartWidget/>        
       </Nav>
     </Navbar.Collapse>
   </Container>

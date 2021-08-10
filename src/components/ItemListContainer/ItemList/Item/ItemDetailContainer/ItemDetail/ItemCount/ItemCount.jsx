@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+
 import './ItemCount.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCartPlus} from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
+
 
 
 function ItemCount(props) {
@@ -52,6 +54,8 @@ function ItemCount(props) {
                         <Link to='/cart'className='terminar-compra' >Terminar mi compra</Link>
                     </button>
                     }
+
+
 
                 </div>
             </div>

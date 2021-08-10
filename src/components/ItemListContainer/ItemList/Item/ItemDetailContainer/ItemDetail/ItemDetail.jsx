@@ -1,23 +1,42 @@
-import React from 'react'
+
+import React, { useState, useContext } from 'react';
+import {CartContext} from './../../../../../../context/CartContext'
 import ItemCount from './ItemCount/ItemCount'
 import './ItemDetail.css'
 import swal from 'sweetalert'
 
 
+
+
+
+
 function ItemDetail({item={}}){
     
+    const [cantidad,setCantidad]=useState(0)
+    const {cartList, guardarItem}= useContext(CartContext)
+    console.log(cantidad);
+
     const handleCount=(cant)=>{
-        return swal({
+        
+        setCantidad(cant)
+        guardarItem({item: item, itemQ: cant})
+
+        
+
+        swal({
             title:`Agregaste ${cant} items de ${item.nombre}`,
             icon:"success",
-            timer:"5000",
+            timer:"2000",
             button: false,
 
         })
         
+        
+        
+        
     };
     
-
+console.log(cartList)
     return (
         
         <div className="item-detail" key={item.id}>
