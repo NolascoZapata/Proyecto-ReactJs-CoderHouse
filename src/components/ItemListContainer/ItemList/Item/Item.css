@@ -1,6 +1,6 @@
 .card-prod{
     margin: 2rem;
-    border-radius: 5%;
+    border: none;
 }
 .card-prod:hover{
    transform: scale(1.02);

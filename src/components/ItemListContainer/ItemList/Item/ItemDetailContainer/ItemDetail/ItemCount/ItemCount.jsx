@@ -31,10 +31,7 @@ function ItemCount(props) {
 
     return (
         <>
-            <div className="card text-center">
-                <div className="card-header">
-                    <h5>Contador de items</h5>
-                </div>
+            <div>
                 <div className="cad-body">
                     <button className="btn-cant" onClick={bajarCantidad}>-</button>
                         <label>{cantidad}</label>
