@@ -14,8 +14,8 @@ function ItemDetail({item={}}){
     
     const [cantidad,setCantidad]=useState(0)
     const {cartList, guardarItem}= useContext(CartContext)
-    console.log(cantidad);
-
+    console.log(cantidad,cartList)
+    
     const handleCount=(cant)=>{
         
         setCantidad(cant)
@@ -36,7 +36,6 @@ function ItemDetail({item={}}){
         
     };
     
-console.log(cartList)
     return (
         
         <div className="item-detail" key={item.id}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form,Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import './Contacto.css'
 
 function Contacto() {
@@ -31,7 +31,7 @@ function Contacto() {
             </Form> 
             
         </div>
-        <Button type="submit" className="mb-2" onClick={handleSubm}>Enviar</Button>
+        <button type="submit" className="btn-enviar" onClick={handleSubm}>Enviar</button>
         </>
     )}
 export default Contacto

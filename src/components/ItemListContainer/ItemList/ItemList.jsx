@@ -1,28 +1,34 @@
 import React,{useEffect,useState} from 'react'
-import {getItems} from '../../../getItems'
 import Item from './Item/Item.jsx'
 import { useParams } from "react-router-dom";
+import { getFirestore } from '../../../services/firebaseService.js';
+
 import Spinner from 'react-bootstrap/Spinner'
-// import ItemDetailContainer from './Item/ItemDetailContainer/ItemDetailContainer'
+
 import './ItemList.css'
 
 function ItemList() {
     const [itemList, setItemList] = useState([]) // estado inicial array itemList vacio
-    const {categoryId}= useParams()
+    
+    const {categoryId} = useParams() // id categoria
     const [loading, setLoading]=useState(true)
 
     useEffect(() => {
         setLoading(true)
-        if (categoryId===undefined){
-            
-            getItems() // simulacion de carga de todos productos
-            .then((resp)=> setItemList(resp)) 
-            setLoading(false) 
-        }else{
-            getItems() // simulacion de carga de todos productos
-            .then((resp)=> setItemList(resp.filter(item=>item.categoria===categoryId))) // filtra por categoria
-            setLoading(false)   
-        }
+
+            let db = getFirestore()
+            let itemsCollection = db.collection('items')
+            const dbQuery = categoryId ?  itemsCollection.where('categoria', '==', categoryId) : itemsCollection
+            dbQuery.get().then(resp => {
+                if (resp.size === 0) {
+                    console.log('No se encontro nada')
+                }else{
+                setItemList(resp.docs.map(item=> ({id: item.id, ...item.data()}) ))}
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+
     }, [categoryId])
 
     return(

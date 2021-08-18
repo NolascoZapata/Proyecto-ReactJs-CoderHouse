@@ -3,6 +3,7 @@ import {CartContext} from './../../context/CartContext'
 import {Table} from 'react-bootstrap'
 import {ImCross} from 'react-icons/im'
 import swal from 'sweetalert'
+import "./Cart.css";
 
 
 function Cart() {
@@ -30,7 +31,7 @@ function Cart() {
 
         :
             <div>
-                <button onClick={cleanList}>Vaciar Carrito</button>
+                <button className="btn-vaciar-finalizar" onClick={cleanList}>Vaciar Carrito</button>
             <Table size="sm">
                 <thead>
                 <tr>
@@ -42,17 +43,17 @@ function Cart() {
                 <tbody>
                 {cartList.map(item => 
                     <tr key = {item.item.id}>
-                        <td>{item.item.nombre}</td>
+                        <td><img src={item.item.imgDir} width='30px' height='40px' alt="" /><p>{item.item.nombre}</p></td>
                         <td>{item.itemQ}</td>
                         <td>${item.item.precio}</td>
-                        <td><ImCross onClick={()=>{removeItem(item)}}/></td> 
+                        <td><ImCross className="remove"onClick={()=>{removeItem(item)}}/></td> 
                     </tr>
                 )}
                     <tr>
                         {`Total a pagar : $${costoTotal()}`} 
                     </tr>
                 </tbody>
-                <button onClick={compraRealizada}>Realizar compra</button>
+                <button className="btn-vaciar-finalizar" onClick={compraRealizada}>Realizar compra</button>
                 </Table>
             </div>
             

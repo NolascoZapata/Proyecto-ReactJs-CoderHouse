@@ -26,7 +26,7 @@ function App() {
                 <Route exact path='/category/:categoryId'> {/*"categoryId es un parametro dinamico que lo toma useParams() en ItemListContainer"*/}
                   <ItemListContainer/>
                 </Route>
-                <Route exact path='/item/:itemId'>
+                <Route exact path='/item/:id'>
                   <ItemDetailContainer/>
                 </Route>
                 <Route exact path='/cart'>

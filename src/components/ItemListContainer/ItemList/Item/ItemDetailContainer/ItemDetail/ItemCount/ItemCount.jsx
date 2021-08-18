@@ -39,7 +39,8 @@ function ItemCount(props) {
 
 
 
-                    {onAddTo ?
+                    {
+                    onAddTo ?
                     <button className="btn-agregar" onClick={()=> onAdd(cantidad) && addToCart(false)}>
                             <FontAwesomeIcon icon={faCartPlus} size="2x"/>
                             <p>Agregar al carrito</p>
