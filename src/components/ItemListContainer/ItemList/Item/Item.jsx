@@ -13,7 +13,7 @@ function Item({ prodData }) {
                     <Card.Body>
                         <Card.Title>{nombre}</Card.Title>
                         <Card.Text>Precio: ${precio} <br/></Card.Text>
-                        <Button className="btn-detalles">
+                        <Button type="button" className="btn-detalles">
                             <Link to={`/item/${id}`} className="text-decoration-none text-light" >
                                 Detalles
                             </Link>

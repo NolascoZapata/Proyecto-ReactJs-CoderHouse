@@ -31,7 +31,7 @@ function Contacto() {
             </Form> 
             
         </div>
-        <button type="submit" className="btn-enviar" onClick={handleSubm}>Enviar</button>
+        <button type="button" className="btn-enviar" onClick={handleSubm}>Enviar</button>
         </>
     )}
 export default Contacto

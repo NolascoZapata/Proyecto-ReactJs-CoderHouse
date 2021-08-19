@@ -1,26 +1,61 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {CartContext} from './../../context/CartContext'
+import { getFirestore } from '../../services/firebaseService';
 import {Table} from 'react-bootstrap'
-import {ImCross} from 'react-icons/im'
+import {ImCross} from 'react-icons/im'  
 import swal from 'sweetalert'
 import "./Cart.css";
 
+//const listaItem = [{id:'1', nombre:'prod1'},{id:'2', nombre:'prod2'},{id:'3', nombre:'prod3'}]
+
+
 
 function Cart() {
+
+    const [buyer, setBuyer] = useState(initialState)
+
     const {cartList, guardarItem,removeItem,costoTotal,cleanList}= useContext(CartContext)
-    console.log(guardarItem)
+    
+    const order = {buyer, item:cartList, totalCompra: `$${costoTotal()}`} // buyer:buyer, 
+    const [orderId, setOrderId] = useState()
+    
 
-
-    const compraRealizada = ()=>{
-        swal({
-            title:`Compra realizada por $${costoTotal()}, Muchas gracias`,
-            icon:"success",
-            timer:"5000",
-            button: false,
-
+    const handlerChange = (evt)=>{
+        setBuyer({
+            ...buyer,
+            [evt.target.name]: evt.target.value,
         })
-        cleanList()
     }
+    
+
+
+
+
+
+    const handlerSubmit=(evt)=>{
+        evt.preventDefault()
+        
+        const db = getFirestore()
+        db.collection('order').add(order)
+        //.then(resp=>console.log(resp))
+        .then(({id})=>{setOrderId(id)
+            swal({
+
+                title:`Compra realizada por $${costoTotal()}, Muchas gracias`,
+                text:`Tu orden de compra es : ${id}`,
+                icon:"success",
+                height: "340px"
+            })
+            
+        })
+        .catch(err=>console.log(err))
+        
+        cleanList()
+        
+    }
+
+    console.log(orderId)
+    console.log(order)
 
     return (
         <>
@@ -31,7 +66,7 @@ function Cart() {
 
         :
             <div>
-                <button className="btn-vaciar-finalizar" onClick={cleanList}>Vaciar Carrito</button>
+                <button type="button" className="btn-vaciar-finalizar" onClick={cleanList}>Vaciar Carrito</button>
             <Table size="sm">
                 <thead>
                 <tr>
@@ -53,8 +88,44 @@ function Cart() {
                         {`Total a pagar : $${costoTotal()}`} 
                     </tr>
                 </tbody>
-                <button className="btn-vaciar-finalizar" onClick={compraRealizada}>Realizar compra</button>
                 </Table>
+
+                <div>
+                    
+                    <form 
+                        onSubmit={handlerSubmit}
+                        onChange={handlerChange}
+                    >
+                        <input 
+                            type='text'
+                            placeholder='nombre' 
+                            name='nombre'
+                            value={buyer.nombre}
+                        />
+                            
+                        <input 
+                            type='text' 
+                            placeholder='ingresa el telefono' 
+                            name='telefono'
+                            value={buyer.telefono}
+                        />
+                            
+                        <input 
+                            type='email' 
+                            placeholder='ingresa el mail' 
+                            name='mail'
+                            value={buyer.mail}
+                        />
+
+                        <button className="btn-vaciar-finalizar">Realizar compra</button>
+                    </form>
+
+
+
+                    
+                </div>
+
+                
             </div>
             
         
@@ -68,3 +139,9 @@ function Cart() {
 }
 
 export default Cart
+
+const initialState ={
+    nombre:'',
+    telefono:'',
+    mail:''
+} 
