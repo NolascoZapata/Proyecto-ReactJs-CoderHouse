@@ -34,7 +34,7 @@ function ItemList() {
     return(
         
         <div className="row">
-            {loading && <Spinner animation="border" variant="secondary" /> /*loading*/ } 
+            {loading && <Spinner animation="border" style={{color: "rgb(255,194,158)"}} /> /*loading*/ } 
             {!loading &&itemList.map((item) => (   //recorro los objetos dentro de mi estado "itemList" y para cada objeto lo ingreso en compoente Item
                 <div className="col-sm-6 col-lg-3 col-12">
                     <Item key={item.id} prodData= {item}/>

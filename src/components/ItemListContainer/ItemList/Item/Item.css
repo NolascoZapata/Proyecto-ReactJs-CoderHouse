@@ -8,11 +8,11 @@
 
 
 .btn-detalles{
-    background-color:rebeccapurple;
+    background-color:rgb(128, 142, 143);
     border: none;
 }
 
 .btn-detalles:hover{
-    background-color:rgb(203, 65, 216);
-    border: solid 1px rebeccapurple;
+    background-color:rgb(255,194,158);
+    transition: 0.5s;
 }

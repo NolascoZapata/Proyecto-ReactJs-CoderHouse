@@ -1,73 +1,22 @@
 import React, { useState, useContext } from 'react';
 import {CartContext} from './../../context/CartContext'
-import { getFirestore } from '../../services/firebaseService';
-import {Table} from 'react-bootstrap'
 import {ImCross} from 'react-icons/im'  
-import swal from 'sweetalert'
 import "./Cart.css";
-
-//const listaItem = [{id:'1', nombre:'prod1'},{id:'2', nombre:'prod2'},{id:'3', nombre:'prod3'}]
-
-
+import FormularioCart from './FormularioCart/FormularioCart';
+import BotonGenerico from '../BotonGenerico/BotonGenerico';
 
 function Cart() {
 
-    const [buyer, setBuyer] = useState(initialState)
-
-    const {cartList, guardarItem,removeItem,costoTotal,cleanList}= useContext(CartContext)
-    
-    const order = {buyer, item:cartList, totalCompra: `$${costoTotal()}`} // buyer:buyer, 
-    const [orderId, setOrderId] = useState()
-    
-
-    const handlerChange = (evt)=>{
-        setBuyer({
-            ...buyer,
-            [evt.target.name]: evt.target.value,
-        })
-    }
-    
-
-
-
-
-
-    const handlerSubmit=(evt)=>{
-        evt.preventDefault()
-        
-        const db = getFirestore()
-        db.collection('order').add(order)
-        //.then(resp=>console.log(resp))
-        .then(({id})=>{setOrderId(id)
-            swal({
-
-                title:`Compra realizada por $${costoTotal()}, Muchas gracias`,
-                text:`Tu orden de compra es : ${id}`,
-                icon:"success",
-                height: "340px"
-            })
-            
-        })
-        .catch(err=>console.log(err))
-        
-        cleanList()
-        
-    }
-
-    console.log(orderId)
-    console.log(order)
-
+    const {cartList,removeItem,costoTotal,cleanList}= useContext(CartContext)    
     return (
         <>
         <h2>Carrito de compras</h2>
         {cartList.length === 0?
-
             <p>El carrito esta vacio</p>
-
         :
-            <div>
-                <button type="button" className="btn-vaciar-finalizar" onClick={cleanList}>Vaciar Carrito</button>
-            <Table size="sm">
+        <div>
+            <BotonGenerico onClick={cleanList} contenido={"Vaciar el carrito"}/>
+            <table>
                 <thead>
                 <tr>
                     <th>Producto</th>
@@ -80,68 +29,21 @@ function Cart() {
                     <tr key = {item.item.id}>
                         <td><img src={item.item.imgDir} width='30px' height='40px' alt="" /><p>{item.item.nombre}</p></td>
                         <td>{item.itemQ}</td>
-                        <td>${item.item.precio}</td>
+                        <td>${item.item.precio*item.itemQ}</td>
                         <td><ImCross className="remove"onClick={()=>{removeItem(item)}}/></td> 
                     </tr>
-                )}
-                    <tr>
-                        {`Total a pagar : $${costoTotal()}`} 
-                    </tr>
+                )}                        
                 </tbody>
-                </Table>
-
-                <div>
-                    
-                    <form 
-                        onSubmit={handlerSubmit}
-                        onChange={handlerChange}
-                    >
-                        <input 
-                            type='text'
-                            placeholder='nombre' 
-                            name='nombre'
-                            value={buyer.nombre}
-                        />
-                            
-                        <input 
-                            type='text' 
-                            placeholder='ingresa el telefono' 
-                            name='telefono'
-                            value={buyer.telefono}
-                        />
-                            
-                        <input 
-                            type='email' 
-                            placeholder='ingresa el mail' 
-                            name='mail'
-                            value={buyer.mail}
-                        />
-
-                        <button className="btn-vaciar-finalizar">Realizar compra</button>
-                    </form>
-
-
-
-                    
-                </div>
-
-                
+            </table>
+            <p className="total">{`Total a pagar : $${costoTotal()}`} </p> 
+            <div className="titulo-form">
+                <h3>Ingresá tus datos para enviar tu pedido</h3>
+                <FormularioCart/>
             </div>
-            
-        
+        </div>
         }
-            
-            
-            
         </>
         
     )
 }
-
 export default Cart
-
-const initialState ={
-    nombre:'',
-    telefono:'',
-    mail:''
-} 

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card,Button } from 'react-bootstrap'
+import { Card} from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import BotonGenerico from '../../../BotonGenerico/BotonGenerico';
 import './Item.css'
 
 
@@ -13,11 +14,11 @@ function Item({ prodData }) {
                     <Card.Body>
                         <Card.Title>{nombre}</Card.Title>
                         <Card.Text>Precio: ${precio} <br/></Card.Text>
-                        <Button type="button" className="btn-detalles">
+                        <BotonGenerico contenido={
                             <Link to={`/item/${id}`} className="text-decoration-none text-light" >
-                                Detalles
-                            </Link>
-                            </Button>
+                            Detalles
+                        </Link>
+                        }/>
                     </Card.Body>
                 </Card>
             )

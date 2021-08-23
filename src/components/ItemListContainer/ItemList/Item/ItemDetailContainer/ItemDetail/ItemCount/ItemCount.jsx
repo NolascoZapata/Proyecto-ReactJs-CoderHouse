@@ -24,10 +24,6 @@ function ItemCount(props) {
     }
 
 
-    const addToCart=(x)=>{
-        setOnAddTo(x)
-    }
-
 
     return (
         <>
@@ -41,7 +37,7 @@ function ItemCount(props) {
 
                     {
                     onAddTo ?
-                    <button type="button" className="btn-agregar" onClick={()=> onAdd(cantidad) && addToCart(false)}>
+                    <button type="button" className="btn-agregar" onClick={()=> {onAdd(cantidad) ; setOnAddTo(false)}}>
                             <FontAwesomeIcon icon={faCartPlus} size="2x"/>
                             <p>Agregar al carrito</p>
                     </button>
@@ -49,7 +45,7 @@ function ItemCount(props) {
                     :
 
                     <button type="button" className= "btn-terminar-compra" >
-                        <Link to='/cart'className='terminar-compra' >Terminar mi compra</Link>
+                        <Link to='/cart'className='terminar-compra'>Terminar mi compra</Link>
                     </button>
                     }
 

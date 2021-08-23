@@ -1,37 +1,79 @@
-import React from 'react'
-import {Form} from 'react-bootstrap'
+import React, {useState} from 'react'
+import BotonGenerico from '../BotonGenerico/BotonGenerico'
 import './Contacto.css'
+import {getFirestore} from '../../services/firebaseService'
+import swal from 'sweetalert'
 
 function Contacto() {
-    const handleSubm = (e)=>{
-        e.preventDefault();
+
+    const [consultor, setConsultor] = useState(initialState)
+    const [consultaId, setConsultaId] = useState()
+    const consulta = {consultor } // buyer:buyer, 
+
+
+    const handlerChange = (evt)=>{
+        setConsultor({
+            ...consultor,
+            [evt.target.name]: evt.target.value,
+        })
+    }
+
+    const handlerSubmit=(evt)=>{
+        evt.preventDefault()
+        
+        const db = getFirestore()
+        db.collection('consulta').add(consulta)
+
+        .then(({id})=>{setConsultaId(id)
+            swal({
+                title:`Consulta enviada!`,
+                text:`La identificacion de consulta es : ${id}`,
+                icon:"success",
+                height: "340px"
+            })
+            setConsultor(initialState)
+        })
+        .catch(err=>console.log(err))
+        
     }
     return (
         <>
         <h2>Envianos tus dudas!</h2>
-        <div className="formulario">
-            <Form>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text"/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                    <Form.Label>Apellido</Form.Label>
-                    <Form.Control type="text"  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
-                </Form.Group>
-            </Form> 
-            
+        <div className="form-consul-cont">
+        <form className='formulario-consulta'
+                        onSubmit={handlerSubmit}
+                        onChange={handlerChange}
+                    >
+                        <input 
+                            type='text'
+                            placeholder='Nombre' 
+                            name='nombre'
+                            value={consultor.nombre}
+                        />
+                        <input 
+                            type='email' 
+                            placeholder='E-mail' 
+                            name='mail'
+                            value={consultor.mail}
+                        />
+                        <textarea
+                            placeholder='Escribí aquí tu consulta' 
+                            name='txtConsulta'
+                            value={consultor.txtConsulta}
+                        />
+                        <div>
+                            <BotonGenerico contenido ={'Enviar'}/>
+                        </div>
+                    </form>
         </div>
-        <button type="button" className="btn-enviar" onClick={handleSubm}>Enviar</button>
+        
         </>
     )}
+
 export default Contacto
+
+const initialState ={
+    nombre:'',
+    txtConsulta:'',
+    mail:'',
+} 

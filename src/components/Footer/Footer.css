@@ -1,9 +1,13 @@
+.pie-de-pagina{
+    margin-top: 100px;
+}
+
 .pie-de-pagina a{
-    color:rebeccapurple;
+    color:rgb(128, 142, 143);
 }
 .pie-de-pagina a:hover{
-    color:rgb(203, 65, 216);
+    color:rgb(255,194,158);
 }
 .pie-de-pagina p{
-    color:rebeccapurple
+    color:rgb(128, 142, 143)
 }

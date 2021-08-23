@@ -1,18 +1,25 @@
-.formulario{
+.form-consul-cont{
+    display: flex;
+}
+
+.form-consul-cont .formulario-consulta{
     display: flex;
     flex-direction: column;
     width: 75%;
-}
-.btn-enviar{
-    background-color:rebeccapurple;
-    border: none;
-    color:white;
-    font-size: 20px;
-    border-radius: 20%;
+    margin: auto;
 }
 
-.btn-enviar:hover{
-    background-color:rgb(203, 65, 216);
-    border: solid 1px rebeccapurple;
-    color: white
+
+.form-consul-cont .formulario-consulta input{
+    margin: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.form-consul-cont .formulario-consulta textarea{
+    margin: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height: 150px;
 }

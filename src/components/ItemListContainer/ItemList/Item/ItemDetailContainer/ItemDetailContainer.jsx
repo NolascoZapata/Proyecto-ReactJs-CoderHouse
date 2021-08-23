@@ -17,7 +17,7 @@ function ItemDetailContainer() {
         dbQuery.collection('items').doc(id).get()
         .then(respuesta => setItem({...respuesta.data(), id: respuesta.id}))
 
-    }, [])
+    }, [id])
 
 
 
