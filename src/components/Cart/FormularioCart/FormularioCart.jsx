@@ -6,7 +6,6 @@ import BotonGenerico from '../../BotonGenerico/BotonGenerico';
 import './FormularioCart.css'
 function FormularioCart() {
     const {cartList,costoTotal,cleanList}= useContext(CartContext)  
-    const [orderId, setOrderId] = useState()
     const [buyer, setBuyer] = useState(initialState)
     const order = {buyer, item:cartList, totalCompra: `$${costoTotal()}`} // buyer:buyer, 
     
@@ -22,7 +21,7 @@ function FormularioCart() {
         const db = getFirestore()
         db.collection('order').add(order)
 
-        .then(({id})=>{setOrderId(id)
+        .then(({id})=>{
             swal({
                 title:`Compra realizada por $${costoTotal()}, Muchas gracias`,
                 text:`Tu orden de compra es : ${id}`,

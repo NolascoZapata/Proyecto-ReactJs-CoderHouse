@@ -7,8 +7,7 @@ import swal from 'sweetalert'
 function Contacto() {
 
     const [consultor, setConsultor] = useState(initialState)
-    const [consultaId, setConsultaId] = useState()
-    const consulta = {consultor } // buyer:buyer, 
+    const consulta = {consultor } //
 
 
     const handlerChange = (evt)=>{
@@ -24,7 +23,7 @@ function Contacto() {
         const db = getFirestore()
         db.collection('consulta').add(consulta)
 
-        .then(({id})=>{setConsultaId(id)
+        .then(({id})=>{
             swal({
                 title:`Consulta enviada!`,
                 text:`La identificacion de consulta es : ${id}`,
