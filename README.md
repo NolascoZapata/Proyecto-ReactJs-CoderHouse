@@ -17,6 +17,7 @@
     > Uso Bootstrap para dar formato a la aplicación.
     > Uso FontAwesome para los icnonos de la aplicación.
     > Uso React Router Dom para la navegación
+    > Use SweetAlert para las alertas.
 
 ## Aplicación en funcionamiento
     ![](gif-babies.gif)
