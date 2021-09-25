@@ -20,7 +20,7 @@
     > Use SweetAlert para las alertas.
 
 ## Aplicación en funcionamiento
-    ![](gif-babies.gif)
+![Babies](Babies.gif)
 
 ### Autor
 
